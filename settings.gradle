@@ -1,0 +1,2 @@
+rootProject.name='chroot'
+include ':app'
