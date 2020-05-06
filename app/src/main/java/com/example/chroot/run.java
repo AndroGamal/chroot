@@ -11,9 +11,9 @@ public class run extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         try {
             Process p=Runtime.getRuntime().exec("bootkali");
-            p.getOutputStream().write("mount -t tmpfs  tmpfs /dev\n".getBytes());
+            p.getOutputStream().write("mount -t ramfs  ramfs /dev\n".getBytes());
             p.getOutputStream().write("mount proc /proc -t proc\n".getBytes());
-            p.getOutputStream().write("mount /sys\n".getBytes());
+            p.getOutputStream().write("mount  -t sysfs sysfs /sys\n".getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
