@@ -42,7 +42,7 @@ FolderPath path;
                     process.getOutputStream().write("dd if=/dev/zero of=storage/extSdCard/swapkali bs=1024 count=524000\n".getBytes());
                     process.getOutputStream().write("mkswap storage/extSdCard/swapkali\n".getBytes());
                     process.getOutputStream().write("swapon -p 8 storage/extSdCard/swapkali\n".getBytes());
-                    process.getOutputStream().write(("tar xJf "+path.getpath()+" -C /data/local").getBytes());
+                    process.getOutputStream().write(("tar xJf "+path.getpath()+" -C /data/local\n").getBytes());
                     process.getOutputStream().write("cp -r /data/local/kali-armhf/bin /data/local/kali-armhf/system\n".getBytes());
                     process.getOutputStream().write("mount -o rw,remount /system\n".getBytes());
                     process.getOutputStream().write("echo \"su -c hostname kali \\\\\\n\">/system/bin/bootkali\n".getBytes());
