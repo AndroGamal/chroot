@@ -48,7 +48,7 @@ FolderPath path;
                     process.getOutputStream().write("echo \"su -c hostname kali \\\\\\n\">/system/bin/bootkali\n".getBytes());
                     process.getOutputStream().write("echo \"su -c chroot /data/local/kali-armhf su \\n\">>/system/bin/bootkali\n".getBytes());
                     process.getOutputStream().write("chmod 777 /system/bin/bootkali\n".getBytes());
-                    process.getOutputStream().write("sed -i \"s/\\/usr\\/local\\/sbin:\\/usr\\/local\\/bin:\\/usr\\/sbin:\\/usr\\/bin:\\/sbin:\\/bin/\\/sbin:\\/bin:\\/usr\\/local\\/sbin:\\/usr\\/local\\/bin:\\/usr\\/sbin:\\/usr\\/bin/g\" data/local/kali-aemhf/etc/login.defs\n".getBytes());
+                    process.getOutputStream().write("sed -i \"s/\\/usr\\/local\\/sbin:\\/usr\\/local\\/bin:\\/usr\\/sbin:\\/usr\\/bin:\\/sbin:\\/bin/\\/sbin:\\/bin:\\/usr\\/local\\/sbin:\\/usr\\/local\\/bin:\\/usr\\/sbin:\\/usr\\/bin/g\" data/local/kali-armhf/etc/login.defs\n".getBytes());
                     process.getOutputStream().write("mount -o ro,remount /system\n".getBytes());
                     process.getOutputStream().write("reboot\n".getBytes());
                 } catch (IOException e) {
