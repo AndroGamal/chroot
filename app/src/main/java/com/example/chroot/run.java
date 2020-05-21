@@ -24,12 +24,12 @@ public class run extends BroadcastReceiver {
             public void run() {
                 try {
                     Process root = Runtime.getRuntime().exec("su");
-                    root.getOutputStream().write("mount -o move /storage/extSdCard /data/local/kali-armhf/sdcard".getBytes());
+                    root.getOutputStream().write("mount -o move /storage/extSdCard /data/local/kali-armhf/sdcard\n".getBytes());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-        });
+        }).start();
         } catch (IOException e) {
             e.printStackTrace();
         }
