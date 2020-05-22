@@ -19,17 +19,17 @@ public class run extends BroadcastReceiver {
             kali.getOutputStream().write("mount proc /proc -t proc\n".getBytes());
             kali.getOutputStream().write("mount  -t sysfs sysfs /sys\n".getBytes());
             kali.getOutputStream().write("mount -o remount -t rootfs  /root rootfs\n".getBytes());
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Process root = Runtime.getRuntime().exec("su");
-                    root.getOutputStream().write("mount -o move /storage/extSdCard /data/local/kali-armhf/sdcard\n".getBytes());
-                } catch (IOException e) {
-                    e.printStackTrace();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        Process root = Runtime.getRuntime().exec("su");
+                        root.getOutputStream().write("mount -o move /storage/extSdCard /data/local/kali-armhf/sdcard\n".getBytes());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-        }).start();
+            }).start();
         } catch (IOException e) {
             e.printStackTrace();
         }
