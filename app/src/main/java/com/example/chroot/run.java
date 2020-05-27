@@ -14,6 +14,7 @@ public class run extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         try {
             Process kali = Runtime.getRuntime().exec("bootkali");
+            kali.getOutputStream().write("mount shmfs /dev/shm -t tmpfs\n".getBytes());
             kali.getOutputStream().write("mount devpts /dev/pts -t devpts\n".getBytes());
             kali.getOutputStream().write("mount -t tmpfs  tmpfs /dev\n".getBytes());
             kali.getOutputStream().write("mount proc /proc -t proc\n".getBytes());
@@ -25,6 +26,7 @@ public class run extends BroadcastReceiver {
                     try {
                         Process root = Runtime.getRuntime().exec("su");
                         root.getOutputStream().write("mount -o move /storage/extSdCard /data/local/kali-armhf/sdcard\n".getBytes());
+                        root.getOutputStream().write("mount -o bind /data/local/kali-armhf/sdcard /storage/extSdCard\n".getBytes());
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
